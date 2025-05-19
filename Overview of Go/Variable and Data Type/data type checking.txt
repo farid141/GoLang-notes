@@ -1,0 +1,8 @@
+switch v := h.(type) {
+case int:
+    fmt.Println("h is of type int with value", v)
+case string:
+    fmt.Println("h is of type string with value", v)
+default:
+    fmt.Println("h is of an unknown type")
+}

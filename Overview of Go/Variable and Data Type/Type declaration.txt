@@ -1,0 +1,5 @@
+# membuat alias tipe data
+type NoKTP string
+
+# menggunakan alias
+var <var_name> NoKTP

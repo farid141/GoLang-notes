@@ -1,0 +1,25 @@
+# membuat module:
+1. go mod init nama_package
+biasanya nama package merupakan nama repo:
+github.com/farid/sadf
+2. akan terbuat file go.mod yang berisi nama module
+
+# membuat package:
+1. buat folder dalam module dimana didalamnya terdapat file dengan nama yang sama dengan folder
+2. Dalam file tersebut tuliskan "package <nama_package>" pada baris pertama
+3. mengakses package dari module
+my-module/my-package
+
+# dokumentasi package go-lang
+https://pkg.go.dev/
+atau standard library: https://pkg.go.dev/std
+
+# init()
+fungsi init dalam package akan dipanggil otomatis ketika package diimport
+
+# blank_identifier
+mengimport package tanpa memanggil fungsi secara langsung dari module
+
+import (
+	_ "package_name"
+)

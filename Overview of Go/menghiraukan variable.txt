@@ -1,0 +1,1 @@
+terkadang sebuah fungsi mengembalikan beberapa data, tetapi jika data tersebut tidak kita gunakan akan terjadi error. Untuk itu kita dapat menamainya "_" agar tidak error

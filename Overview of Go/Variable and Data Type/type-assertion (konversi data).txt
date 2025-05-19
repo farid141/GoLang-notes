@@ -1,0 +1,16 @@
+# biasanya dari interface kosong (any) ke tipe tertentu
+value, ok := var.(string/int/etc)
+akan panic bila gagal dikonversi
+
+value akan bernilai sesuai var yang dicek (var), jika error bernilai zero value sesuai tipe
+
+# mengecek tipe data (mengembalikan tipe data dengan tipe any):
+var.(type)
+
+switch value := result.(type){
+	case string:
+		...
+	default:
+		...
+
+}

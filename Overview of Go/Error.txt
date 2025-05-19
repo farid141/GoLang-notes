@@ -1,0 +1,15 @@
+# merupakan interface/type yang memiliki method Error() dan var Message
+
+# biasanya digunakan dalam sebuah fungsi untuk mengembalikan error.
+
+# custom error
+1. buat type yang mengimplementasikan Error() dan Message
+2. buat dan kembalikan error
+return &validationError{Message: "asdasd"}
+3. cek error
+if validationErr, ok := err.(*validationErr); ok:
+
+dalam baris tersebut terdapat multi statement:
+1. assign validationErr dan ok:
+validationErr, ok := err.(*validationErr);
+2. pengecekan variable ok

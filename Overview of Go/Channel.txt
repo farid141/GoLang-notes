@@ -1,0 +1,11 @@
+digunakan untuk mempassing nilai
+Channels are used to share data between goroutines and coordinate their execution.
+
+membuat channel yang hanya dapat menerima integer
+intChan := make(chan int)
+
+memberikan value ke channel
+intChan <- value
+
+mengakses value ke variable, akan dijalankan apabila sudah ada nilai yang masuk dari channel:
+var := <- intChan

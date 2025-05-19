@@ -1,0 +1,15 @@
+parallel programming: mengerjakan beberapa task sekaligus dalam satu waktu
+concurrency: memanfaatkan background untuk menjalankan I/O proses, dan menggunakan thread nganggur untuk task lain
+
+proses: menjalankan aplikasi, memori terisolasi dari proses/aplikasi lain
+thread: menjalankan beberapa tugas dalam satu aplikasi, dapat mengakses memori dari thread lain
+
+- parallel: butuh banyak thread
+- concurrency: bisa sedikit thread, karena bergantian dan memproses task I/O diluar thread
+
+jika prosesor banyak, lebih baik parallel
+
+# goroutine defaultnya concurrency dan support multi-core
+
+CPU-bound
+I/O Bound

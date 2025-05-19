@@ -1,0 +1,55 @@
+mengakali ketika pengirim data lebih cepat daripada penerima
+
+channel := make(chan <type>, <buf_len>)
+
+cap(channel) // kapasitas
+len(channel) // banyak buffer sekarang
+
+
+# channel juga bisa tanpa goroutine
+
+
+# range-channel (TIDAK ADA KAITAN DENGAN BUFFERED)
+Cara Kerja for-range pada Channel
+1. Menerima Data : Setiap iterasi loop akan membaca data dari channel menggunakan operator <-.
+2. Berhenti Otomatis : Loop akan berhenti secara otomatis ketika channel ditutup (close) dan tidak ada lagi data yang tersisa di dalam channel.
+3. Error Handling : Jika channel tidak pernah ditutup, loop akan menunggu selamanya (deadlock) atau menyebabkan program macet.
+
+for data:= range channel{
+	fmt.println()
+}
+
+# SELECT-CASE
+Digunakan untuk membaca data dari beberapa channel sekaligus. Sintaks hampir sama dengan switch-case, akan mengambil data tercepat yang ada.
+
+for {
+        select {
+        case data1, ok := <-ch1:
+            if !ok {
+                ch1 = nil
+            } else {
+                fmt.Println("Received from Source 1:", data1)
+            }
+        case data2, ok := <-ch2:
+            if !ok {
+                ch2 = nil
+            } else {
+                fmt.Println("Received from Source 2:", data2)
+            }
+	default:
+            fmt.Println("no data")
+        }
+
+        if ch1 == nil && ch2 == nil {
+            break
+        }
+    }
+
+Untuk mencegah deadlock jika channel tidak ditutup, karena terdapat timeout sebagai batas menunggu dari data terakhir diterima
+
+bisa dikombinasikan dengan for-range untuk mengambil beberapa kali
+
+Keuntungan Menggunakan for-range pada Channel
+1. Sederhana : Tidak perlu menulis logika manual untuk memeriksa apakah channel sudah kosong atau ditutup.
+2. Aman : Loop berhenti secara otomatis ketika channel ditutup, menghindari deadlock.
+3. Efisien : Memungkinkan goroutine berkomunikasi secara efisien tanpa perlu khawatir tentang sinkronisasi manual.

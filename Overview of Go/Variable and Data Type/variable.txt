@@ -1,0 +1,10 @@
+# mendeklarasikan variable:
+var <var_name> <type>
+tambahkan const agar tidak bisa diubah
+
+# Go compiler sangat ketat, tidak membolehkan sebuah variable dideklarasikan tanpa digunakan
+
+# menginisialisasi variable (deklarasi sekaligus set initial value)
+dapat dilakukan tanpa tipe data/ keyword var
+- s := "asd"
+- var s = "asd"

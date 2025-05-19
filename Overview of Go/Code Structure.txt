@@ -1,0 +1,24 @@
+# standard library:
+- fmt untuk std in/out terminal, formatting string
+- time untuk variable tipe date/time
+- log 
+- math
+
+# bisa mengimport fungsi spesifik dari std lib:
+import math/rand
+
+# menjalankan file go:
+1. go run file_name.go
+2. go run ./dir/dir  = menjalankan beberapa file go sekaligus
+
+# build
+go build
+mengcompile main function ditandai dengan "package main" dalam code menjadi file executable sesuai platform
+
+# ketika mengakses resource external lebih baik jika  kita menutupnya:
+defer(var)
+
+# ketika membaca dokumentasi fungsi, apabila sebuah parameter didefinisikan dengan ...string, maka itu berarti dapat multiple variable
+
+1. kita harus menamai file sebagai package, biasanya main
+2. Setiap program Go harus memiliki satu main function

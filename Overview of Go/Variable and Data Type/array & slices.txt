@@ -1,0 +1,31 @@
+# array dan slice (deretan data dengan tipe sama) memiliki beberapa perbedaan 
+
+# array disortir pada memory sesuai dengan urutan assignment nya, tiadk seperti map
+
+# Ukuran dinamis
+Array tidak dinamis, ukuran dialokasikan saat pendefinisian
+Slice dinamis, ukuran dapat ditambah jika kurang. 
+
+# pembuatan slices:
+1. Tanpa inisialisasi:
+var mySlice []string
+mySlice = append(mySlice, "dsa")
+2. Dengan inisialisasi
+var mySlice = []string {"asd", "dsa", "sad"}
+
+# Memiliki beberapa method, dapat diakses dalam IDE
+
+# Memecah array (variadic syntax)
+mySlice...
+
+# Array berisi nilai default jika tidak terisi
+string: ""
+int: 0
+
+
+4. Perilaku saat Dikirim ke Fungsi
+Array :
+Dikirim sebagai nilai (copy). Perubahan di dalam fungsi tidak memengaruhi array asli.
+Slice :
+Dikirim sebagai referensi ke underlying array .
+Perubahan elemen di dalam fungsi akan terlihat di luar (karena mengacu ke array yang sama).

@@ -1,0 +1,20 @@
+seperti bahasa C, digunakan untuk menggambarkan sebuah data berisi apa saja
+type Customer struct{
+	Name, Address string
+	Age int
+}
+
+// deklarasi
+var eko Customer
+eko.Name = "Eko"
+eko.address = "asdasd"
+
+// inisialisasi dengan struct Literals (harus urut)
+eko := Customer{"Budi", "Indonesia", 23}
+
+
+// struct dapat memiliki fungsi
+func (customer Customer) sayHello(){}
+
+- customer (c kecil) adalah placeholder, terserah
+- lebih efisien menggunakan pointer (customer *Customer)
