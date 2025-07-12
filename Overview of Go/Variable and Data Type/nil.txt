@@ -1,3 +1,0 @@
-di bahasa lain, biasanya sebuah variabel yang belum diberi nilai, akan berisi null/undefined
-
-di Go menggunakan nil. Tetapi hanya untuk tipe data interface, function, map, slice, pointer dan channel. Sedangkan lainnya memiliki default value

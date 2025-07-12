@@ -1,5 +1,0 @@
-len(str): menghitung jumlah karakter
-"strings"[idx]: mengambil karakter pada index => karakter akan berubah jadi byte
-"string"[idx]="s": assign karakter ke string
-
-method kompatibel dengan array
