@@ -1,3 +1,0 @@
-defer <stmt>: sebuah statement akan dieksekusi di bagian akhir pada sebuah fungsi
-panic(str): benar2 menghentikan program (defer tetap dieksekusi)
-recover(): setelah ada panic program dapat berjalan kembali (biasanya diletakkan di fungsi defer)
