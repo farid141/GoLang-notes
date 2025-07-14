@@ -6,32 +6,38 @@ Tetapi jika dibuat independen/perfile, tidak masalah. Walaupun editor memberikan
 
 ## mendeklarasikan fungsi (wajib type-annotations)
 
+```go
 func func_name (params1 params1_type) (ret_type1, ret_type2){
  return val1, val2
 }
 
-# untuk mengambil datanya pada saat memanggil
-
 val1, val2, := func_name()
+```
 
-# Fungsi anonim (tanpa nama)
+## Fungsi anonim (tanpa nama)
 
-biasanya digunakan untuk as variable/callback
+biasanya digunakan untuk variable/callback
+
+```go
 func() {
  fmt.Println("Hello from an anonymous function!")
 }()
 
-# Assign anonymous ke variabel (seperti JS)
-
 greet := func(name string) {
  fmt.Printf("Hello, %s!\n", name)
 }
+```
 
-# Func as a value/params
+## Fungsi sebagai param
 
-dapat di-assign ke variabel
-atau parameter:  func foo(filter func(string) string){}
+biasanya digunakan untuk variable/callback
 
-# Variadic
+```go
+func foo(filter func(string) string){}
+```
 
-sebuah fungsi dapat menerima parameter sebanyak2nya dan akan dibaca sebagai array dalam fungsi tersebut. Harus ditempatkan di parameter terakhir
+## Variadic Parameter
+
+sebuah fungsi dapat menerima parameter sebanyak2nya dan akan dibaca sebagai slice dalam fungsi tersebut.
+
+- Harus ditempatkan di parameter terakhir
