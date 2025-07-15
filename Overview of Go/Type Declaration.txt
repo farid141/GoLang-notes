@@ -1,2 +1,0 @@
-seperti typescript dapat membuat tipe tertentu
-bisa juga fungsi: type Filter func(string)string

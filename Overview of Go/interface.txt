@@ -1,8 +1,0 @@
-seperti sebuah blueprint/kontrak harus diimplementasikan
-type HasName interface{
-	GetName() string
-}
-
-setiap tipe data yang sesuai dengan kontrak interface akan dianggap sebagai interface tersebut
-
-sebuah struct dapat dianggap sebagai interface jika memiliki kontrak yang sesuai dengan interface
