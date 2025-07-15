@@ -26,6 +26,8 @@ perhatikan bahwa sintaks seperti C, tapi tidak menggunakan ()
 ```go
 for i:=0; i<10; i++{
 }
+
+for{} // invinite loop
 ```
 
 ### For-range
