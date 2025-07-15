@@ -16,12 +16,12 @@ val1, val2, := func_name()
 
 ## Fungsi anonim (tanpa nama)
 
-biasanya digunakan untuk variable/callback
+biasanya digunakan untuk variable/callback. Bisa dijalankan langsung
 
 ```go
 func() {
  fmt.Println("Hello from an anonymous function!")
-}()
+}() // jalankan langsung dengan ()
 
 greet := func(name string) {
  fmt.Printf("Hello, %s!\n", name)
