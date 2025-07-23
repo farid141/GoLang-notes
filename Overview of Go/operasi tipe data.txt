@@ -1,5 +1,0 @@
-sama seperti C/PHP:
-
-- operasi perbandingan
-- operasi matematika
-- operasi boolean (&&, ||)
