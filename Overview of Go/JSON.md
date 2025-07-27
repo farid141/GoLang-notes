@@ -1,8 +1,12 @@
-# 📦 JSON di Go
+# JSON
 
-## 🔹 Penulisan Struct dengan Tag JSON
+sudah disediakan package built-in Golang/JSON
 
-Untuk menghubungkan field di struct Go dengan field dalam JSON, gunakan tag `json:"fieldname"` setelah nama field:
+## Penulisan Struct dengan Tag JSON (tidak wajib)
+
+Untuk menghubungkan field di `struct` dengan field dalam JSON, gunakan tag `json:"fieldname"` setelah nama field untuk disesuaikan dengan field.
+
+Berlaku 2 arah (decode dan encode) dan tidak case sensitive untuk capslock.
 
 ```go
 type Person struct {
@@ -17,13 +21,11 @@ type Person struct {
 * Gunakan tanda backtick (`` ` ``) untuk menuliskan tag.
 * Tambahkan `omitempty` untuk menghilangkan field dari hasil JSON jika nilainya kosong atau default (0, "", false).
 
----
+## Decode JSON (Unmarshal)
 
-## 🔹 Parsing JSON (Unmarshal)
+JSON ke variable Go, mengembalikan satu data err. Caranya sama saja walaupun tipe datanya kompleks, asalkan kita mendefinisikan tipe dengan benar.
 
-String JSON ke variable Go
-
-### ✅ Jika struktur data **diketahui**
+### Struktur data diketahui
 
 ```go
 var people []Person
@@ -33,46 +35,57 @@ if err != nil {
 }
 ```
 
-### ✅ Jika struktur data **tidak diketahui**
+### Struktur data dinamis (tidak diketahui)
+
+konversi ke map dengan value `any`.
 
 ```go
+// berupa obj campuran
 var data map[string]interface{}
 err := json.Unmarshal([]byte(myJson), &data)
 if err != nil {
     log.Fatal(err)
 }
-```
 
-Atau jika data berupa array campuran:
-
-```go
+// Atau jika data berupa array campuran:
 var arr []interface{}
 json.Unmarshal([]byte(myJson), &arr)
 ```
 
 ---
 
-## 🔹 Serialisasi JSON (Marshal)
+## Encode JSON (Marshal)
 
-Mengubah data Go menjadi JSON string:
+Mengubah data Go menjadi JSON string. Mengembalikan 2 data, json dan error. `Caranya lebih mudah daripada decode`, karena tidak perlu menentukan tipe data
 
 ```go
 person := Person{Name: "Alice", Age: 25}
-jsonData, err := json.Marshal(person)
-if err != nil {
-    log.Fatal(err)
+
+func logJSON(data interface{}){
+    jsonData, err := json.Marshal(person)
+    if err != nil {
+        log.Fatal(err)
+    }
+    fmt.Println(jsonData)
 }
-fmt.Println(string(jsonData))
+logJson(person)
 ```
 
----
+## Stream Data
 
-## 🔹 Tips Tambahan
+Gunakan `json.Decoder` jika membaca dari `io.Reader` (misalnya file atau HTTP response). String JSON tidak perlu diload pada program, langsung dapat hasil decodenya.
 
-* Gunakan `json.Decoder` jika membaca dari `io.Reader` (misalnya file atau HTTP response).
-* Hindari typo di tag `json:"..."` karena tidak akan muncul error, tetapi field tidak akan diserialisasi/deserialisasi.
-* Gunakan `encoding/json` dari standar library Go.
+```go
+// Decode (tidak perlu load JSON dalam program)
+reader, _ := os.Open("sample.json")
+decoder := JSON.NewDecoder(reader)
 
----
+customer := Customer{}
+decoder.Decode(&customer)
 
-Kalau kamu ingin bagian tambahan seperti penggunaan `json.RawMessage`, nested struct, atau decoding streaming JSON, silakan beri tahu!
+// Encode (langsung tulis JSON di file)
+writer, _ := os.Create("asd.json")
+encoder := JSON.NewEncoder(writer)
+
+encoder.Encode(customer)
+```
