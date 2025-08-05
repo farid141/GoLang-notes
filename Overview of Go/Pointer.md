@@ -27,6 +27,16 @@ var addr2 *Address := &addr1
 addr1.Name = "edited"
 ```
 
+## Khusus untuk struct
+
+Go memiliki syntactic sugar khusus untuk struct pointers, untuk mengedit field kita tidak memerlukan `*`
+
+```go
+s := &a
+s.Field = 34  // sama dengan (*s).Field = 34
+
+```
+
 ## mengubah data lama dapat juga menggunakan
 
 *addr2 = Address{"dsa1", "dsa2"}
