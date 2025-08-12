@@ -6,6 +6,8 @@ Pattern dalam menulis code, dimana memisahkan antara business logic dan technica
 
 ### database.go
 
+Dipanggil untuk mendapatkan obj DB
+
 ```go
 package belajar_golang_database
 
@@ -29,9 +31,12 @@ func GetConnection() *sql.DB {
 }
 ```
 
-## Controller
+## Controller/Handler
 
 ### repository/comment_repository_impl_test.go
+
+- Memanggil repository dengan memberikan DB
+- Gunakan fungsi dalam repo (insert, update, etc)
 
 ```go
 package repository
@@ -88,6 +93,8 @@ func TestFindAll(t *testing.T) {
 ```
 
 ## Repository Interface
+
+Digunakan untuk kontrak untuk mendesain repository
 
 ```go
 package repository
