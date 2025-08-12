@@ -1,9 +1,5 @@
 # Function
 
-## Dalam module Go, nama fungsi tidak boleh sama
-
-Tetapi jika dibuat independen/perfile, tidak masalah. Walaupun editor memberikan garis merah
-
 ## mendeklarasikan fungsi (wajib type-annotations)
 
 ```go
