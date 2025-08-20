@@ -37,3 +37,12 @@ func foo(filter func(string) string){}
 sebuah fungsi dapat menerima parameter sebanyak2nya dan akan dibaca sebagai slice dalam fungsi tersebut.
 
 - Harus ditempatkan di parameter terakhir
+
+```go
+// definisi fungsi
+func Command(name string, arg ...string) *Cmd
+
+// memanggil fungsi
+var mySlice = []string {"asd", "dsa", "sad"}
+Command("call command", mySlice...)
+```
