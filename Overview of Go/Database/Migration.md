@@ -16,7 +16,7 @@ jika butuh driver lain tambahkan dengan pemisah spasi
 migrate create -ext mysql -dir db/migrations nama_file_migrasi [n]
 ```
 
-Dari perintah tersebut akan terbuat file sql migrasi. Bisa kita tambahkan DDL/DML untuk mengubah database, `n` (opsional) merupakan jumlah file terbaru yang akan dimigrasi.
+Dari perintah tersebut akan terbuat file sql migrasi. Bisa kita tambahkan `DDL/DML` untuk operasi ke database, `n` (opsional) dapat membuat beberapa file migrasi sekaligus.
 
 Jika kita menjalankan up dan ada beberapa file, tiap file akan diberi urutan sendiri (bukan batch).
 
@@ -35,6 +35,12 @@ migrate -database db_url -path db/migrations down [n]
 ```
 
 state migration akan disimpan pada table `schema_migrations`. Sehingga apabila kita punya file migration baru, tidak akan menjalankan migrasi yang sudah dilakukan sebelumnya.
+
+### Dirty State
+
+Terjadi ketika dalam sebuah file migrasi sukses sebagian. Dalam kasus ini `schema_migrations` belum menambahkan migrasi tersebut ke tabel. Sehingga akan gagal ketika migrasi dijalankan (up/down).
+
+Untuk menangani kasus seperti itu, kita harus menangani secara manual (singkirkan aksi yang sukses dan jalankan `up` ulang)
 
 ## Soda/pop
 

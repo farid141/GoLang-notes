@@ -8,11 +8,13 @@ Penyimpanan log di file .log hanya berupa text akan sulit kalau ingin mencarinya
 
 ## Library
 
-Sebenarnya sudah ada built-in tetapi terlalu sederhana, untuk case lebih kompleks gunakan tambahan:
+Sebenarnya sudah ada built-in log tetapi terlalu sederhana, untuk case lebih kompleks gunakan tambahan:
 
 - logrus
 - zap
 - zerolog
+
+Pada catatan ini, akan dibahas logging dengan logrus.
 
 ### Logrus
 
@@ -58,7 +60,7 @@ logger.setFormatter(&logrus.JSONFormatter{})
 
 #### Field
 
-Menambahkan field ke log
+Secara default, pada Logrus akan memberikan beberapa field (`time, level, msg`). Kita juga bisa menambahkan field ke log jika mau.
 
 ```go
 logger.WithFields(logrus.Fields{
