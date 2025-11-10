@@ -6,7 +6,7 @@ Merupakan framework web untuk membuat webserver
 
 ### Context
 
-Merupakan parameter handler dan representasi request yang masuk ke webserver
+Merupakan parameter handler dan representasi request dan response webserver
 <https://docs.gofiber.io/api/ctx/>
 
 ```go
@@ -16,6 +16,12 @@ c.Query("name")
 // mengembalikan response
 return c.SendString("Hello, World!")
 ```
+
+#### Request Data
+
+- Form data
+- multipart
+- body
 
 ### Handler
 

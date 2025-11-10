@@ -9,9 +9,11 @@ Mendukung file konfigurasi:
 - env
 - properties (Java)
 
-```bash
-go get github.com/spf13/viper
-```
+`go get github.com/spf13/viper`
+
+## File Env
+
+Biasanya menggunakan file `.env`.
 
 ```go
 var config *viper.Viper = viper.New()
@@ -29,10 +31,21 @@ config.GetString("database.host")
 config.GetInt("database.port")
 ```
 
-## Environment Variable
+## Environment Variable OS
 
-Merupakan variable yang tersimpan dalam OS, bukan file env. Kita dapat membaca konfigurasi env variable menggunakan viper (tidak terbaca secara default)
+Merupakan variable yang tersimpan dalam `OS, bukan file env`. Dapat dibaca dengan `BindEnv` atau `AutomaticEnv`.
 
 ```go
-config.AutomaticEnv() //panggil ini
+// satu persatu (env_os, identified_as, default_value)
+err := viper.BindEnv("server.port", "APP_PORT", "FALLBACK_PORT")
+if err != nil {
+    log.Fatalf("Error binding environment variable: %v", err)
+}
+
+// otomatis
+config.AutomaticEnv()
 ```
+
+## Prioritas Sumber
+
+Viper akan memberikan prioritas lebih tinggi ke `OS` daripada `file` jika keduanya dilakukan.

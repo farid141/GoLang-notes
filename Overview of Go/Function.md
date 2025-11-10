@@ -1,6 +1,6 @@
 # Function
 
-## mendeklarasikan fungsi (wajib type-annotations)
+## Deklarasi wajib type-annotations
 
 ```go
 func func_name (params1 params1_type) (ret_type1, ret_type2){

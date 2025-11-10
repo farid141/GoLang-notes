@@ -4,7 +4,11 @@ Digunakan untuk menyimpan aktifitas perubahan database dalam file migrasi. Merup
 
 ## Golang Migrate
 
-github.com/golang-migrate/migrate. Mendukung banyak jenis database
+<github.com/golang-migrate/migrate>. Mendukung banyak jenis database
+
+`go install -tags 'postgres mysql' github.com/golang-migrate/migrate/v4/cmd/migrate@latest`
+
+jika butuh driver lain tambahkan dengan pemisah spasi
 
 ### Membuat migration
 
@@ -31,3 +35,18 @@ migrate -database db_url -path db/migrations down [n]
 ```
 
 state migration akan disimpan pada table `schema_migrations`. Sehingga apabila kita punya file migration baru, tidak akan menjalankan migrasi yang sudah dilakukan sebelumnya.
+
+## Soda/pop
+
+soda/pop merupakan bagian dari buffalo framework adalah salah satu package untuk migration pada go
+
+install soda: `go get github.com/gobuffalo/pop@latest`
+untuk menambahkan soda pada mac/linux, kita perlu:
+
+1. menambahkan path go ke file .zprofile/.bash_profile
+2. kemudian source .zprofile/.bash_profile untuk merefresh path yang didaftarkan ke sistem
+
+konfigurasi database dituliskan dalam file database.yml pada root folder
+
+untuk menambahkan migration:
+soda generate fizz migration_name
