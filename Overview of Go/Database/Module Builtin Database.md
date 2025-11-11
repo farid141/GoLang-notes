@@ -19,7 +19,11 @@ Beberapa pengaturan yang bisa digunakan:
 - setConnMaxIdleTime(duration)
 - setConnMaxLifetime(duration)
 
-## Eksekusi Perintah
+## Fungsi yang tersedia
+
+### Eksekusi dan Query
+
+Eksekusi menggunakan `db.ExecContext()` digunakan untuk perintah seperti `INSERT, CREATE, DELETE`. Sedangkan Query menggunakan `db.QueryContext()` untuk operasi `SELECT`.
 
 ```go
  // query non-select
@@ -37,9 +41,13 @@ for rows.Next() {
 defer rows.Close() // rows harus ditutup
 ```
 
-Dalam query select, untuk menyimpan hasil ke variable, sesuaikan dengan tipe data Go yang sesuai. untuk timestamp, masukkan ke time.Time
+Dalam `QueryContext` ada 3 hal yang perlu diperhatikan
 
-### Menangani data nullable
+- Pengambilan data dengan `rows.Scan` dan harus memiliki jumlah variadic param sesuai dengan column dari query select
+- untuk mengambil data selanjutnya menggunakan `rows.Next`
+- `rows.Close` untuk menutup resource/ram yang dipakai.
+
+#### Menangani data nullable
 
 ```go
 var email sql.NullString
@@ -51,9 +59,11 @@ if email.Valid{
 }
 ```
 
-### Parameter Query
+#### Parameter Query
 
-Sebelumnya kita menggunakan `QueryContext` dan `ExecContext` dengan string secara langsung. Hal ini memiliki resiko kerentanan `SQL Injection`. Dimana string yang diproses ternyata mengandung karakter yang dapat mengubah query. Untuk mengatasi itu, kita dapat gunakan params yang berupa variadic daripada format string.
+Dalam penggunaan `QueryContext` dan `ExecContext` tidak disarankan menggunakan string secara langsung (`tanpa variadic params`). Hal ini memiliki resiko kerentanan `SQL Injection`. Dimana string yang diproses ternyata mengandung karakter yang dapat mengubah query.
+
+Untuk mengatasi itu, kita dapat gunakan params yang berupa variadic daripada format string.
 
 Gunakan karakter `?` dalam sql string, akan direplace oleh variadic yang dikirim setelahnya
 
@@ -71,7 +81,7 @@ insertId, err := result.LastInsertId()
 
 ### Prepare Statement
 
-Cara efisien untuk batch operation dimana satu query digunakan berulang ulang untuk data yang berbeda, sehingga koneksi lebih efisien
+Cara `efisien untuk batch operation` dimana satu query digunakan berulang ulang untuk data yang berbeda, sehingga koneksi lebih efisien
 
 ```go
 sqlString := "INSERT INTO comments (email, comment) VALUES (?, ?)"
@@ -97,7 +107,7 @@ tx, err := db.Begin()
 if err != nil
     panic(err)
 
-// do query
+// do query stuff...
 
 err := tx.Commit();
 if err != nil
